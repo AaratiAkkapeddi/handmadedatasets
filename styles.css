@@ -139,7 +139,7 @@ main > *{
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1050px) {
     :root{
         --font-size-body: 16px;
         --font-size-heading: 18px;
@@ -153,6 +153,7 @@ main > *{
         width: calc(100% - var(--unit) * 1);
         left: 0;
         top: 0;
+        background-color: var(--background-color);
         border-right: none;
         border-bottom: 1px dotted var(--text-color);
         padding: calc(var(--unit) / 2);
@@ -187,7 +188,7 @@ main > *{
         border-top: none;
     }
     nav h1{
-        font-size: 18px;
+        font-size: 17px;
         margin:0;
     }
     nav .nav-menu a {

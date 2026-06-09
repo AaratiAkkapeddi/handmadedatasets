@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handmade Datasets</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav aria-label="Primary navigation">
+        <h1>Handmade<br>Datasets</h1>
+        <button
+            class="hamburger"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="./">Home</a></li>
+            <li><a href="./schedule.html">Weekly Schedule</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./resources.html">Resources</a></li>
+            <li><a href="./chapter.html">Read the chapter</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <h1>Handmade Datasets: Strategies for working critically with small data and Artificial Intelligence</h1>
+
+    </main>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('open');
+                hamburger.classList.toggle('open');
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

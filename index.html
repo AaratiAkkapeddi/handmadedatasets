@@ -30,6 +30,7 @@
             <li><a href="./schedule.html">Weekly Schedule</a></li>
             <li><a href="./projects.html">Projects</a></li>
             <li><a href="./resources.html">Resources</a></li>
+            <li><a href="./chapter.html">Read the chapter</a></li>
         </ul>
     </nav>
 
@@ -248,33 +249,7 @@ Students will need to purchase compute units from Google Colab in order to run M
             });
         }
 
-        // Cursor sprinkle effect
-        const hands = ['•'];
-        
-        document.addEventListener('mousemove', (e) => {
-            const hand = hands[Math.floor(Math.random() * hands.length)];
-            if(Math.random() > 0) { // Adjust frequency of sprinkles
-            const span = document.createElement('span');
-            span.textContent = hand;
-            span.style.position = 'fixed';
-            span.style.left = e.clientX + 'px';
-            span.style.top = e.clientY + 'px';
-            span.style.pointerEvents = 'none';
-            span.style.fontSize = '8px';
-            span.style.opacity = '1';
-            span.style.color = 'var(--primary-color)';
-            span.style.zIndex = '-1';
-            // span.style.transform = `translate(${Math.random() * -50}%, ${Math.random() * -50}%) rotate(${Math.random() * 0}deg)`;
-            
-            document.body.appendChild(span);
-            
-            setTimeout(() => {
-                span.style.transition = 'opacity 1s ease-out';
-                span.style.opacity = '0';
-                setTimeout(() => span.remove(), 1000);
-            }, 0);
-        }
-        });
+
     </script>
 </body>
 
