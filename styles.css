@@ -51,13 +51,28 @@ h1, h2, h3, h4, h5, h6 {
 h1{
     font-size: 32px;
 }
+a.button{
+    border: 1px solid var(--text-color);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    margin: 1rem 0;
+    display:inline-block;
+}
+a.button:hover{
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
 body{
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: var(--font-family);
+    font-size: var(--font-size-body);
     margin: 0;
 }
-
+section{
+    border-bottom: 1px solid var(--text-color);
+    padding: 24px 0;
+}
 nav{
     padding: var(--unit);
     padding-top: 24px;
@@ -104,8 +119,9 @@ nav .hamburger.open span:nth-child(2) {
 nav .hamburger.open span:nth-child(3) {
     transform: translateY(-11px) rotate(-45deg);
 }
-nav h1{
+nav h1 a, nav h1{
     font-size: 26px;
+    text-decoration: none;
     line-height: 1;
     font-family: "WonderType", sans-serif;
 }
@@ -120,7 +136,7 @@ nav .nav-menu {
 nav h1 img{
     height: 24px;
     width: auto;
-    vertical-align: top;
+    vertical-align: middle;
 }
 nav h1 img:last-child{
     margin-left: 2px;
@@ -130,7 +146,11 @@ nav ul{
     padding: 0;
     margin-top:0;
 }
-
+figcaption{
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
 nav ul li{
     margin-bottom: 10px;
 }

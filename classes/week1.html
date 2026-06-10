@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handmade Datasets</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav aria-label="Primary navigation">
+        <h1>
+            <a href="../" aria-label="Handmade Datasets homepage">
+                <img src="../assets/hand_left.png"
+                    alt="A pixelated left hand reaching outward" />Handmade<br>Datasets<img
+                    src="../assets/hand_right.png" alt="A pixelated right hand reaching outward" />
+            </a>
+        </h1> <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+            aria-controls="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="../">Home</a></li>
+            <li><a href="../schedule.html">Weekly Schedule</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../chapter.html">The chapter</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <h1>Week 1: Introduction to Handmade Datasets</h1>
+        <section>
+<p><em>At a glance:</em></p>
+        <p><a class="button" href="https://docs.google.com/presentation/d/1BASnRZ7eAy3FaTyAz-ujYl43chNMY7lQDG9RNe0Rejg/edit?usp=sharing">Slides</a></p>
+        <p>Topics:</p>
+
+        <ul>
+            <li>Introduction to Handmade Datasets</li>
+            <li>Dataset Collection Strategies and Ethics</li>
+            <li>Intro to pix2pix and first assignment</li>
+        </ul>
+
+        <p>Tech:</p>
+
+        <ul>
+            <li>Introduction to Google Colab and Google Drive</li>
+            <li>Running a python script in Google Colab</li>
+        </ul>
+
+        <p>Homework:</p>
+
+        <ul>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSemr7_WoAv15aoD6C4x89KtouvJgsTGlLIWoe-g_vRpnMxQyw/viewform?usp=send_form">Intake form</a></li>
+            <li>Come in with 50% of your B images for Part 1 of generative image model project</li>
+            <li>Fill out <a href="https://forms.gle/NiJFAM6quKfmzFt19t" target="_blank"
+                    rel="noopener noreferrer">datasheet questionnaire</a></li>
+        </ul>
+        </section>      
+        <section>
+            <h2>Agenda:</h2>
+            <ul>
+                <li>Introductions</li>
+                <li>What is a handmade dataset?</li>
+                <li>Class Overview</li>
+                <li>Introduction to Google Colab & Google Drive</li>
+                <li>Introduction to pix2pix and first big project</li>
+            </ul>
+        </section>
+        
+        <a href="../schedule.html">Back to schedule</a>
+  
+
+
+
+
+
+
+
+
+    </main>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('open');
+                hamburger.classList.toggle('open');
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
