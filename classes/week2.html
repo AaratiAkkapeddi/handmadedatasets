@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handmade Datasets</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav aria-label="Primary navigation">
+        <h1>
+            <a href="../" aria-label="Handmade Datasets homepage">
+                <img src="../assets/hand_left.png"
+                    alt="A pixelated left hand reaching outward" />Handmade<br>Datasets<img
+                    src="../assets/hand_right.png" alt="A pixelated right hand reaching outward" />
+            </a>
+        </h1> <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+            aria-controls="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="../">Home</a></li>
+            <li><a href="../schedule.html">Weekly Schedule</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../chapter.html">The chapter</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <h1>Week 2: Dataset Prep and Augmentation</h1>
+        <section>
+            <p><em>Section 1: 6/21,Section 2: 6/24</em></p>
+            <p><em>At a glance:</em></p>
+            <p><a class="button"
+                    href="https://docs.google.com/presentation/d/1FFQUjHicbpPlg0vJuB3UWRvk8BixQ_-6MZGQD6b4k_o/edit?usp=drive_link">Slides</a>
+            </p>
+            <em>MORE INFO COMING SOON</em>
+         
+        </section>
+        <br><br>
+        <a href="../schedule.html">Back to schedule</a><br><br>
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('open');
+                hamburger.classList.toggle('open');
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
