@@ -108,7 +108,7 @@ function setup() {
     'A black 512 by 512 pixel drawing canvas. Use a mouse or touch to sketch a face using thin white lines on a black background. Draw simple outlines for eyebrows, eyes, a nose, and a mouth, then click the Transfer button to generate an AI-rendered face from your sketch.'
   );
 
-  pix2pix = ml5.pix2pix('model/humanseg_BtoA.pict', modelLoaded);
+  pix2pix = ml5.pix2pix('model/faCES.pict', modelLoaded);
 }
 
 function draw() {
