@@ -38,11 +38,251 @@
         <h1>Project 3: Audio Models</h1>
         <section>
 
-            <em>MORE INFO COMING SOON</em>
+            <p><img class="img-fluid" src="../assets/semilla.png"
+                    alt="Maiz corn kernels laid out in a circle on a kind of machine surface" width="1170"
+                    height="722"><br><strong id="docs-internal-guid-a01a8a5e-7fff-ac19-3048-c3efaf3e6f22"><a
+                        href="https://www.semilla.ai/?work=semilla-ai">https://www.semilla.ai/?work=semilla-ai</a>
+                </strong><br><br>You will train a RAVE (Realtime Audio Variational
+                autoEncoder) model on audio samples you collect. RAVE learns the
+                characteristics of sounds and can generate new variations, transform audio in
+                real-time, and create entirely new sonic textures based on your training
+                data.<br><br></p>
+            <p dir="ltr">Before collecting audio, questions to consider:</p>
+            <ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr">Before collecting audio, questions to consider:</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">What sounds are meaningful to you or your
+                        practice?</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">How could a generative sound model serve
+                        your creative work?</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">What makes your sound collection unique or
+                        underrepresented?</p>
+                </li>
+            </ul>
+            <p dir="ltr">---------------------------------------------------------</p>
+            <p><strong>Your handmade dataset:</strong></p>
+            <ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">~2-3 hours worth of audio samples (.wav
+                        preferred)</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Your own recordings. It could be:</p>
+                </li>
+                <ul>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">field recordings, </p>
+                    </li>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">instruments, </p>
+                    </li>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">voice, </p>
+                    </li>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">found sounds, </p>
+                    </li>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">beats, loops, textures </p>
+                    </li>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">Culturally specific sounds (i.e.
+                            traditional instruments, regional sounds, fauna sounds)</p>
+                    </li>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">Archival audio (with proper permissions)
+                            - family recordings, community sounds.</p>
+                    </li>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">Genre specific sounds</p>
+                    </li>
+                </ul>
+            </ul>
+            <p><strong>How to Prepare Audio Files</strong></p>
+            <p><strong>Recording your own sounds:</strong></p>
+            <ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">On Mac:</p>
+                    <ul>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Use QuickTime Player (built-in)</p>
+                        </li>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Or use Audacity (free, download from <a
+                                    href="http://audacityteam.org">audacityteam.org</a>)</p>
+                        </li>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Or use GarageBand (built-in)</p>
+                        </li>
+                    </ul>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">On Windows:</p>
+                    <ul>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Use Audacity (free, <a
+                                    href="http://audacityteam.org">audacityteam.org</a>)</p>
+                        </li>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Or Voice Recorder (built-in)</p>
+                        </li>
+                    </ul>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">On Linux:</p>
+                    <ul>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Use Audacity</p>
+                        </li>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Or command line: arecord -f cd -d 60
+                                output.wav (60 seconds)</p>
+                        </li>
+                    </ul>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">On your phone:</p>
+                    <ul>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Record with voice memo app</p>
+                        </li>
+                        <li dir="ltr" aria-level="2">
+                            <p dir="ltr" role="presentation">Transfer files to computer</p>
+                            <strong id="docs-internal-guid-3f041451-7fff-485f-7d28-62b0decfc6f0"></strong>
+                        </li>
+                        <li dir="ltr" aria-level="2">Convert to .wav if needed</li>
+                    </ul>
+                </li>
+            </ul>
+            <p dir="ltr"><strong>Converting audio to the right format:</strong></p>
+            <p dir="ltr">If your audio is in the wrong format, use <a href="http://audacityteam.org">Audacity</a>
+                (free):</p>
+            <ol>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Open Audacity</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">File → Open → Select your audio file</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">If stereo and you want mono: Tracks → Mix →
+                        Mix Stereo Down to Mono</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Check sample rate (bottom left): Should be
+                        44100 Hz</p>
+                </li>
+                <ul>
+                    <li dir="ltr" aria-level="2">
+                        <p dir="ltr" role="presentation">If not: Tracks → Resample → Choose 44100
+                            Hz</p>
+                    </li>
+                </ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">File → Export → Export as WAV</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Settings: 16-bit PCM</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Save to your my_audio_dataset folder</p>
+                </li>
+            </ol>
+            <p></p>
+            <p><strong>What Makes a Good Audio Dataset</strong></p>
+            <p dir="ltr">Just like every other dataset we've worked with it's about striking
+                a balance between cohesive and varied:</p>
+            <ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">All samples should share a sonic
+                        characteristic or aesthetic</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">But have variety within that (different
+                        pitches, rhythms, timbres)</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Example: All recordings from the same
+                        instrument, but different playing techniques</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Example: All from one location, but
+                        different times of day</p>
+                </li>
+            </ul>
+            <p>---------------------------------------------------------</p>
+            <p dir="ltr"><strong>Trained Model  (due in two weeks skip for now)</strong></p>
+            <p dir="ltr">Be ready to:</p>
+            <ul>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">Show Checkpoint files from your training
+                    </p>
+                </li>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">Show 5-10 audio files generated by your
+                        model</p>
+                </li>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">Talk through:</p>
+                </li>
+                <ol>
+                    <li dir="ltr" aria-level="3">
+                        <p dir="ltr" role="presentation">What audio data did you record and why?
+                        </p>
+                    </li>
+                    <li dir="ltr" aria-level="3">
+                        <p dir="ltr" role="presentation">What worked? What surprised you?</p>
+                    </li>
+                    <li dir="ltr" aria-level="3">
+                        <p dir="ltr" role="presentation">Who could use this tool?</p>
+                    </li>
+                </ol>
+            </ul>
+            <p dir="ltr">---------------------------------------------------------</p>
+            <p dir="ltr">Inspo:</p>
+            <p><strong><img class="img-fluid" src="../assets/oka.png"
+                        alt="digital rendering of grass, water, sand and a robot's legs in shiny boots. This is the album cover for hexorcismos' Okachihuali"
+                        width="900" height="884"></strong></p>
+            <p><strong id="docs-internal-guid-4c44bbf9-7fff-c0ff-96b4-6d49f5c22dfe"><a
+                        href="https://hexorcismos.bandcamp.com/album/--2">Hexorcismos</a></strong>
+            </p>
+            <p><strong><img class="img-fluid" src="../assets/semilla.png" alt="instrument made with corn kernels (maiz)"
+                        width="1138" height="710"></strong></p>
+            <p><strong><strong id="docs-internal-guid-d9a77a7c-7fff-def6-e25f-78c8af1bdcf7"><a
+                            href="https://www.semilla.ai/?work=semilla-ai">https://www.semilla.ai/?work=semilla-ai</a>
+                    </strong></strong></p>
+            <p><strong><strong><strong id="docs-internal-guid-3b542e3a-7fff-958f-528c-3eb6b731c9f1"><strong
+                                id="docs-internal-guid-c8d9d0d9-7fff-a914-973c-58f87970e59d"><img class="img-fluid"
+                                    title="Screenshot 2026-04-01 at 10.25.42 AM.png" src="../assets/boop.png"
+                                    width="487" height="272"></strong></strong></strong></strong></p>
+            <p><strong><strong><strong id="docs-internal-guid-3b542e3a-7fff-958f-528c-3eb6b731c9f1">Martin
+                            Heinze<br><a href="https://martstil.de/works/reykjavik-sunburn">Reykjavik
+                                Sunburn</a></strong></strong></strong></p>
+            <p>
+                <strong><strong>---------------------------------------------------------</strong></strong>
+            </p>
+            <p><strong><em>Due week 8</em></strong></p>
+            <ul>
+                <li>Submit in discord a google drive link to your audio samples. They should be
+                    split into multiple tracks using the google colab code. </li>
+            </ul>
+            <strong><strong>---------------------------------------------------------</strong></strong>
+            </p>
+            <p><strong><em>Due week 9</em></strong></p>
+            <ul>
+                <li>Submit in discord a google drive link to your audio model checkpoints. If
+                    you are able, you can also submit generated output audio samples. </li>
+            </ul>
 
-         
+
         </section>
-   
+
         <br><br>
         <a href="../schedule.html">Back to schedule</a><br><br>
 
