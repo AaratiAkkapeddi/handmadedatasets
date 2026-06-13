@@ -1,0 +1,46 @@
+<!--
+  Copyright (c) 2018 ml5
+
+  This software is released under the MIT License.
+  https://opensource.org/licenses/MIT
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pix2Pix web demo</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.js"></script>
+  <script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+
+<body>
+  <main>
+    <p>This html demo of pix2pix is slightly modified from Dongphil Yoo's <a href="https://github.com/dongphilyoo/pix2pix-ml5-demo">pix2pix-ml5-demo</a></p>
+    <p id="status" role="status" aria-live="polite">Loading Model... Please wait...</p>
+
+    <div id="app">
+      <div id="input"
+           role="img"
+           aria-label="Drawing canvas. Use a mouse or touch to draw a face using white lines on a black background. Sketch eyebrows, eyes, a nose, and a mouth as simple outlines.">
+      </div>
+      <img id="output"
+           src="images/blank.png"
+           alt="The AI-generated face output will appear here after clicking Transfer."
+           aria-live="polite">
+    </div>
+
+    <div id="buttons" role="group" aria-label="Canvas controls">
+      <button id="randomBtn" aria-label="Load a random example face drawing onto the canvas">Random</button>
+      <button id="clearBtn" aria-label="Clear the canvas and start over">Clear</button>
+      <button id="transferBtn" aria-label="Run the pix2pix model and generate a face from your drawing">Transfer</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

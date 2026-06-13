@@ -37,16 +37,187 @@
     <main id="main-content">
         <h1>Project 1: Image Models</h1>
         <section>
-            <p><em>Section 1: 7/26,Section 2: 7/29</em></p>
-            <p><em>At a glance:</em></p>
-            <p><a class="button"
-                    href="https://docs.google.com/presentation/d/1GqKysVfuCqURoFXK5bWZk99ZaAc_oazVeeMZ3gqpkuE/edit?usp=drive_link">Slides</a>
+            <!--https://colab.research.google.com/drive/1fN8neIOUJh94JaxjoFTw4XJE_SD2ywQi-->
+            <p dir="ltr"><img class="img-fluid" src="../assets/atob.png"
+                    alt="pix2pix model screenshot where the lefthand side is a drawing input and the right handside translates the drawing into a photorealistic image"
+                    width="1240" height="666"><br><br>Over the next few weeks you will train a
+                Pix2Pix conditional GAN model to perform paired image-to-image translation
+                using data you collect yourself. This assignment asks you to think critically
+                about what visual translations matter to you, your community, or your
+                practice.<strong> </strong></p>
+            <p dir="ltr">Before you start collecting data, things to consider:</p>
+            <ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">What translation might be meaningful to you
+                        or your community?</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">What visual knowledge do you have that AI
+                        doesn't?</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Whose perspective is centered in this
+                        translation?</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">What would a corporate dataset miss about
+                        this translation?</p>
+                </li>
+            </ul>
+            <p dir="ltr" role="presentation">
+                -----------------------------------------------------------------------------
             </p>
-            <em>MORE INFO COMING SOON</em>
+            <p dir="ltr"><strong>What your Handmade Dataset will be like:</strong></p>
+            <p>300+ paired images minimum (you create both A and B versions) . Think of A as
+                the input and B as the expected output. They should be square and not bigger than 1024 x 1024 pixels.
+                and the file names should exactly match across folder A &amp; B<strong
+                    id="docs-internal-guid-5e2074a9-7fff-ab04-0189-7bd5b82bd7cc"><br><br></strong><em>Example:<br><img
+                        class="img-fluid" src="../assets/fam.png"
+                        alt="left-hand side is of outlines of faces and right-hand side is of photographs of faces"
+                        width="1174" height="556"><br><br></em></p>
+            <ul>
 
-         
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">Fill out this <a
+                            href="https://forms.gle/AvDgHZQMkYFeg3dv9">datasheet
+                            questionnaire</a><br><br></p>
+                </li>
+            </ul>
+            <p dir="ltr" role="presentation">
+                -----------------------------------------------------------------------------
+            </p>
+            <p dir="ltr"><strong>When you train your model </strong></p>
+            <p dir="ltr">Be ready to:</p>
+            <ul>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">Show Checkpoint files from your training
+                    </p>
+                </li>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">Show 10+ test images showing: Input A |
+                        Generated B | Real B</p>
+                </li>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">Talk through:</p>
+                </li>
+                <ol>
+                    <li dir="ltr" aria-level="3">
+                        <p dir="ltr" role="presentation">What transformation did you choose and
+                            why?</p>
+                    </li>
+                    <li dir="ltr" aria-level="3">
+                        <p dir="ltr" role="presentation">What did the slowness of creating your
+                            dataset teach you?</p>
+                    </li>
+                    <li dir="ltr" aria-level="3">
+                        <p dir="ltr" role="presentation">What worked? What surprised you?</p>
+                    </li>
+                    <li dir="ltr" aria-level="3">
+                        <p dir="ltr" role="presentation">Who could use this tool?</p>
+                    </li>
+                </ol>
+            </ul>
+            <p dir="ltr" role="presentation">
+                -----------------------------------------------------------------------------
+            </p>
+            <p dir="ltr"><strong>Inspo:</strong></p>
+            <p dir="ltr" role="presentation"><strong><img class="img-fluid" src="../assets/blobid0.jpg" width="624"
+                        height="312"><br><a
+                        href="https://webarchive.ars.electronica.art/festival/2017/ai//en/index.html%3Fp=3401.html">https://webarchive.ars.electronica.art/festival/2017/ai//en/index.html%3Fp=3401.html</a>
+                    Fall of the House of Usher by Anna
+                    Ridler<br><br><br>-------------------------------------------------------------------------<br><em>*****What's
+                        due week 2*****</em><br></strong></p>
+            <p dir="ltr">1. Come in with 50% of your B images in a google drive folder. Please submit a small sample of
+                your images in the discord before you finish all ~150 so I can double check your ideas before you put a
+                bunch of effort in :)
+                Submit a link to your google drive folder of images. Don't worry too much
+                about the aspect ratio as we will run python scripts in google
+                colab to batch crop our images next week. </p>
+            <ul>
+
+            </ul>
+            <p>2. Fill out <a href="https://forms.gle/NiJFAM6quKfmzFt19">datasheet
+                    questionnaire</a></p>
+            <p dir="ltr" role="presentation"><strong
+                    id="docs-internal-guid-1cfaec17-7fff-20dd-e8f9-d7c34bf9c49e"> <strong>-------------------------------------------------------------------------</strong></strong>
+            </p>
+            <p dir="ltr" role="presentation"><strong><strong>Tips<br></strong></strong></p>
+            <ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">The more homogenous your data is the less
+                        of it you need to get good results.</p>
+                </li>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">So try and be consistent where you can. For
+                        example, if you are taking photos, have consistent lighting</p>
+                </li>
+            </ul>
+            <p dir="ltr" role="presentation"><strong><strong><strong
+                            id="docs-internal-guid-fcdc3f23-7fff-4acc-9e0f-81a2d2aafbc9"></strong></strong></strong>
+            </p>
+            <ul>
+                <li dir="ltr" aria-level="1">
+                    <p dir="ltr" role="presentation">You're inputs and outputs will be square in
+                        aspect ratio. While you don't need to crop your images manually, just
+                        remember they will eventually be cropped. </p>
+                </li>
+            </ul>
+            <p dir="ltr" role="presentation"><strong><strong><strong
+                            id="docs-internal-guid-c7b5eae4-7fff-3a5e-087e-a5487dde4c1d"></strong></strong></strong>
+            </p>
+            <p dir="ltr">For example, if your dataset is of seashells try to center the
+                seashell and have the same zoom-level in every image so that when you
+                eventually crop the images will be consistent<strong><strong><strong
+                            id="docs-internal-guid-e790b4c2-7fff-712a-dac7-7461bf1d62b7"></strong><img class="img-fluid"
+                            src="../assets/seashell2.png"
+                            alt="two examples: on the left are three images where different types of seashells are centered and about the same size on the page, on the right are three images where different types of seashells are different sizes and in different areas of the page"
+                            width="1798" height="656"><br></strong></strong></p>
+            <br><br><br>-------------------------------------------------------------------------<br><em>*****What's
+                due week 3*****</em><br></strong></p>
+            <p dir="ltr">1. Come in with 100% of your A &amp; B images in two separate
+                google drive folders. So that's 300 B images and 300 corresponding A images.
+                Submit links to your google drive folder of images in discord. <br><br>Your images should
+                be <br>- no bigger than 1024 x 1024 aspect ratio<br>- jpeg, jpg or png<br>- the file names
+                should exactly match across folders A &amp; B<br>- no spaces, capitals, or
+                special characters in your file names<br><br><br></p>
+            <p></p>
+            <p dir="ltr" role="presentation"><strong
+                    id="docs-internal-guid-1cfaec17-7fff-20dd-e8f9-d7c34bf9c49e"> </strong></p>
+            <br><br><br>-------------------------------------------------------------------------<br><em>*****What's
+                due week 4*****</em><br></strong></p>
+            <p dir="ltr"><strong>finish training your model  </strong></p>
+            <p dir="ltr">Submit in Discord a link to a google drive folder containing:</p>
+            <ul>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">Show 10+ generated images/screenshots showing: Input A
+                        | Generated B </p>
+                </li>
+                <li dir="ltr" aria-level="2">
+                    <p dir="ltr" role="presentation">A text document answering:</p>
+                    <ol>
+                        <li dir="ltr" aria-level="3">
+                            <p dir="ltr" role="presentation">What transformation did you choose and
+                                why?</p>
+                        </li>
+                        <li dir="ltr" aria-level="3">
+                            <p dir="ltr" role="presentation">What did the slowness of creating your
+                                dataset teach you?</p>
+                        </li>
+                        <li dir="ltr" aria-level="3">
+                            <p dir="ltr" role="presentation">What worked? What challenges did you
+                                face? What surprised you?</p>
+                        </li>
+                        <li dir="ltr" aria-level="3">
+                            <p dir="ltr" role="presentation">Who could use this tool? What context
+                                do you envision this model in?</p>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+            <p dir="ltr" role="presentation"><strong
+                    id="docs-internal-guid-1cfaec17-7fff-20dd-e8f9-d7c34bf9c49e"> </strong></p>
         </section>
-   
+
         <br><br>
         <a href="../schedule.html">Back to schedule</a><br><br>
 

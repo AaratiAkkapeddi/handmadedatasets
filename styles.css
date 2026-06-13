@@ -51,6 +51,10 @@ h1, h2, h3, h4, h5, h6 {
 h1{
     font-size: 32px;
 }
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
 a.button{
     border: 1px solid var(--text-color);
     padding: 0.75rem 1.5rem;

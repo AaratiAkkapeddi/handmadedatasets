@@ -1,0 +1,63 @@
+
+
+div {
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    height: 512px;
+    width: 512px;
+    box-shadow: none !important;
+}
+
+
+button{
+    border: 1px solid var(--text-color);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    margin: 1rem 0;
+    display:inline-block;
+     background-color: var(--background-color);
+    color: var(--text-color);
+}
+button:hover{
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+main{
+    margin-left:0;
+    margin: 20px;
+}
+main > *{
+    max-width: none;
+}
+
+
+#app {
+    margin: 0px 0px 20px 0px;
+}
+
+#input {
+    display: inline;
+    filter: contrast(110%) brightness(150%);
+}
+
+canvas {
+    border: 1px solid rgb(224, 224, 224);
+}
+
+#output {
+    border: 1px solid rgb(224, 224, 224);
+    height: 512px;
+    width: 512px;
+}
+
+#colors div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 10px 12px;
+    display: inline-block;
+}
+
