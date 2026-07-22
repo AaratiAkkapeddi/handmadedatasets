@@ -13,10 +13,32 @@
 
 </head>
 <body>
-
+    <nav aria-label="Primary navigation">
+        <h1>
+            <a href="../" aria-label="Handmade Datasets homepage">
+                <img src="../assets/hand_left.png"
+                    alt="A pixelated left hand reaching outward" />Handmade<br>Datasets<img
+                    src="../assets/hand_right.png" alt="A pixelated right hand reaching outward" />
+            </a>
+        </h1>
+        <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+            aria-controls="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="../">Home</a></li>
+            <li><a href="../schedule.html">Weekly Schedule</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../chapter.html">The chapter</a></li>
+        </ul>
+    </nav>
+    <main id="main-content">
 <div class="wrap">
 
-  <h1>Markov Chain tester</h1>
+  <h2>Markov Chain tester</h2>
   <p class="sub">Paste a passage or drop in a .txt file and using markov chains this website will render text based on the statistical probabilities. Markov chains track which words tend to follow which throughout the text, then uses those odds to generate new text. </p>
 
   <div class="board">
@@ -85,7 +107,7 @@
     </div>
   </div>
 </div>
-
+</main>
 <script src="./main.js"></script>
 
 </body>
