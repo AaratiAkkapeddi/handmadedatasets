@@ -115,9 +115,9 @@
     }
 
     generateBtn.disabled = true;
-    generateBtn.textContent = 'Weaving…';
-    setWeaving(true);
-    outputBody.innerHTML = '<p class="placeholder">Spinning your paragraph…</p>';
+    generateBtn.textContent = 'Generating…';
+
+    outputBody.innerHTML = '<p class="placeholder">Generating your paragraph…</p>';
 
     setTimeout(() => {
       try {
@@ -136,12 +136,12 @@
         outputMeta.textContent = numSentences + ' sentence' + (numSentences === 1 ? '' : 's') + ' · ' + n + '-gram';
         outputBody.querySelector('.output-text') && setupOutputActions(paragraph);
       } catch (err) {
-        outputBody.innerHTML = '<p class="placeholder">Couldn\'t spin a paragraph from that text.<span class="hint">Try pasting a longer or more varied passage, or loosen the weave tightness.</span></p>';
+        outputBody.innerHTML = '<p class="placeholder">Couldn\'t generate a paragraph from that text.<span class="hint">Try pasting a longer or more varied passage.</span></p>';
         outputMeta.textContent = '';
       } finally {
         generateBtn.disabled = false;
         generateBtn.textContent = 'Generate paragraph';
-        setWeaving(false);
+
       }
     }, 450);
   });
@@ -160,7 +160,7 @@
     });
     const againBtn = document.createElement('button');
     againBtn.className = 'icon-btn';
-    againBtn.textContent = 'Spin again';
+    againBtn.textContent = 'generate again';
     againBtn.addEventListener('click', () => generateBtn.click());
     actions.appendChild(copyBtn);
     actions.appendChild(againBtn);
