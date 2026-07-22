@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reweave — spin new text from old</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/rita"></script>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+
+<div class="wrap">
+
+  <h1>Markov Chain tester</h1>
+  <p class="sub">Paste a passage or drop in a .txt file and using markov chains this website will render text based on the statistical probabilities. Markov chains track which words tend to follow which throughout the text, then uses those odds to generate new text. </p>
+
+  <div class="board">
+    <div class="panel" id="input-panel">
+      <div class="panel-head">
+        <span class="panel-title">Source text</span>
+        <span class="panel-meta" id="word-count">0 words</span>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="paste" id="tab-paste">Paste text</button>
+        <button class="tab" data-tab="upload" id="tab-upload">Upload .txt</button>
+      </div>
+
+      <div id="pane-paste">
+        <textarea id="source-text" placeholder="Paste a chapter, an article, a diary entry — anything with at least a few sentences. The more text, the richer the weave."></textarea>
+      </div>
+
+      <div id="pane-upload" style="display:none; flex:1;">
+        <label class="dropzone" id="dropzone" for="file-input">
+          <strong id="dz-label">Drop a .txt file here</strong>
+          <span>or click to browse</span>
+          <span class="filename" id="dz-filename"></span>
+          <input type="file" id="file-input" accept=".txt,text/plain">
+        </label>
+      </div>
+
+      <div class="controls">
+        <div class="field">
+          <label for="ngram">An n-gram is just a chunk of n consecutive words from your text (a 1-gram is a single word, a 2-gram is a pair, and so on). In a Markov chain, n controls how much context the model remembers before predicting the next word. lower n makes output looser and more random, higher n keeps it closer to the original phrasing but needs more source text to work well.</label>
+          <select id="ngram">
+            <option value="2">2-gram</option>
+            <option value="3" selected>3-gram</option>
+            <option value="4">4-gram</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sentences">Sentences</label>
+          <select id="sentences">
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="generate-btn" id="generate-btn" disabled>Generate paragraph</button>
+      <div id="error-box"></div>
+    </div>
+
+    <div class="thread-col">
+
+    </div>
+
+    <div class="panel" id="output-panel">
+      <div class="panel-head">
+        <span class="panel-title">Generated paragraph</span>
+        <span class="panel-meta" id="output-meta"></span>
+      </div>
+      <div class="output-body" id="output-body">
+        <p class="placeholder">Nothing generated yet.
+          <span class="hint">Add source text on the left, then generate.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./main.js"></script>
+
+</body>
+</html>
