@@ -104,9 +104,7 @@
     });
   }
 
-  function setWeaving(on){
-    threadPath.classList.toggle('weaving', on);
-  }
+
 
   generateBtn.addEventListener('click', () => {
     const text = currentText().trim();
