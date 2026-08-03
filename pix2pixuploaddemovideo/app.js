@@ -363,6 +363,25 @@ function loadImageAsync(src) {
   });
 }
 
+// Discards the current pix2pix instance and creates a fresh one from the
+// same .pict file. Used to recover mid-run if the model's WebGL context gets
+// evicted (GPU memory pressure) -- a brand-new instance gets brand-new
+// textures for its weights instead of trying to repair the old, corrupted
+// ones.
+function reloadModel() {
+  return new Promise((resolve, reject) => {
+    if (!currentModelUrl) {
+      reject(new Error('No model file to reload from.'));
+      return;
+    }
+    try {
+      pix2pix = ml5.pix2pix(currentModelUrl, () => resolve());
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -460,6 +479,10 @@ async function transferVideo() {
 
   const frameDurationMs = 1000 / fps;
   let framesWritten = 0;
+  let consecutiveFailures = 0;
+  let reloadAttempts = 0;
+  const MAX_CONSECUTIVE_FAILURES = 5; // this many identical failures in a row means the model's context is gone, not a one-off glitch
+  const MAX_RELOAD_ATTEMPTS = 3;      // cap total reloads so a persistently broken setup still gives up eventually
 
   for (let i = 0; i < totalFrames; i++) {
     const t = Math.min(i / fps, Math.max(0, duration - 0.02));
@@ -477,8 +500,30 @@ async function transferVideo() {
     let result;
     try {
       result = await pix2pixTransferAsync(frameCanvas.elt);
+      consecutiveFailures = 0;
     } catch (err) {
       console.log('Frame', i, 'failed:', err);
+      consecutiveFailures++;
+
+      if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
+        if (reloadAttempts >= MAX_RELOAD_ATTEMPTS) {
+          statusMsg.html('The model keeps losing its GPU context and reloading isn\u2019t helping. Try a shorter clip, a lower sample rate, or a different device/browser.');
+          break;
+        }
+
+        reloadAttempts++;
+        statusMsg.html(`The model appears to have lost its GPU context (likely memory pressure). Reloading it (attempt ${reloadAttempts}/${MAX_RELOAD_ATTEMPTS})...`);
+        try {
+          await reloadModel();
+          consecutiveFailures = 0;
+          i--; // retry this same frame now that the model is fresh
+          continue;
+        } catch (reloadErr) {
+          console.log('Model reload failed:', reloadErr);
+          statusMsg.html('Could not reload the model automatically. Try a shorter clip, or reload the page and try again.');
+          break;
+        }
+      }
       continue;
     }
     if (!result || !result.src) continue;
@@ -489,6 +534,12 @@ async function transferVideo() {
     } catch (err) {
       console.log('Frame', i, 'image load failed:', err);
       continue;
+    } finally {
+      // If ml5 handed back a blob URL rather than a data URL, release it --
+      // otherwise these accumulate for the life of the page.
+      if (result.src.startsWith('blob:')) {
+        URL.revokeObjectURL(result.src);
+      }
     }
 
     stitchGfx.clear();
