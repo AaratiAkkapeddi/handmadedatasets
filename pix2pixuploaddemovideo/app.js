@@ -3,20 +3,19 @@ const SCALE = 2;
 const DISPLAY = SIZE * SCALE; // 512
 const STROKE_WEIGHT = 0.5;
 
-// --- Video processing settings ---
-const VIDEO_SAMPLE_FPS = 8;      // how many frames/sec to sample from the source video
-const MAX_VIDEO_FRAMES = 240;    // safety cap (30s @ 8fps) so a long upload can't run forever
+// --- Image-sequence processing settings ---
+const OUTPUT_FPS = 8;             // playback rate of the stitched output video
+const MAX_SEQUENCE_FRAMES = 1000; // safety cap so an enormous folder can't run forever
 
 let inputImg, inputCanvas, modelCanvas, output, statusMsg;
 let pix2pix, transferBtn, clearBtn, modelFileInput, imageFileInput;
 let isDrawing = false;
 let currentModelUrl = null;
 
-// --- Video state ---
-let uploadedVideo = null;        // hidden <video> element holding the uploaded clip
-let uploadedVideoUrl = null;     // object URL for the uploaded clip
-let videoFileInput, videoTransferBtn, videoOutput, videoDownloadLink;
-let processingVideo = false;
+// --- Image-sequence state ---
+let uploadedImageFiles = [];      // sorted array of File objects (the frame sequence)
+let imageFolderInput, sequenceTransferBtn, sequenceOutput, sequenceDownloadLink;
+let processingSequence = false;
 
 // ── Floyd-Steinberg dither (color) ───────────────────────────────────────────
 function ditherFloydSteinbergColor(pg) {
@@ -118,15 +117,15 @@ function setup() {
   // No model is loaded until the user uploads a .pict file.
   transferBtn.attribute('disabled', '');
 
-  setupVideoControls();
+  setupSequenceControls();
 }
 
-// Builds the video-upload UI programmatically so no HTML edits are required.
-// If you'd rather define these in your HTML, just give them the same ids
-// (#videoFileInput, #videoTransferBtn, #videoOutput) and this function will
-// pick up the existing elements instead of creating new ones.
-function setupVideoControls() {
-  const existingInput = document.getElementById('videoFileInput');
+// Wires up the image-sequence UI. Picks up existing elements by id if the
+// HTML already defines them (#imageFolderInput, #videoTransferBtn,
+// #videoOutput -- kept as the ids so existing markup / CSS doesn't need to
+// change), otherwise creates them.
+function setupSequenceControls() {
+  const existingInput = document.getElementById('imageFolderInput');
   const existingBtn    = document.getElementById('videoTransferBtn');
   const existingOutput = document.getElementById('videoOutput');
 
@@ -136,63 +135,67 @@ function setupVideoControls() {
   wrapper.style.marginTop = '12px';
 
   if (existingInput) {
-    videoFileInput = existingInput;
+    imageFolderInput = existingInput;
   } else {
-    videoFileInput = document.createElement('input');
-    videoFileInput.type = 'file';
-    videoFileInput.id = 'videoFileInput';
-    videoFileInput.accept = 'video/*';
-    wrapper.appendChild(videoFileInput);
+    imageFolderInput = document.createElement('input');
+    imageFolderInput.type = 'file';
+    imageFolderInput.id = 'imageFolderInput';
+    imageFolderInput.accept = 'image/*';
+    imageFolderInput.multiple = true;
+    imageFolderInput.setAttribute('webkitdirectory', '');
+    imageFolderInput.setAttribute('directory', '');
+    wrapper.appendChild(imageFolderInput);
   }
-  videoFileInput.addEventListener('change', handleVideoFile);
+  imageFolderInput.addEventListener('change', handleImageFolder);
 
   if (existingBtn) {
-    videoTransferBtn = existingBtn;
+    sequenceTransferBtn = existingBtn;
   } else {
-    videoTransferBtn = document.createElement('button');
-    videoTransferBtn.id = 'videoTransferBtn';
-    videoTransferBtn.textContent = 'Transfer Video';
-    wrapper.appendChild(videoTransferBtn);
+    sequenceTransferBtn = document.createElement('button');
+    sequenceTransferBtn.id = 'videoTransferBtn';
+    sequenceTransferBtn.textContent = 'Transfer Image Sequence';
+    wrapper.appendChild(sequenceTransferBtn);
   }
   // Note: intentionally NOT using the `disabled` attribute here. A truly
   // disabled button blocks clicks entirely, so the user gets no feedback
   // about *why* nothing happens. Instead we keep it clickable and let
-  // transferVideo() explain what's missing (no model / no video yet),
-  // while updateVideoButtonState() below handles the visual dimming.
-  videoTransferBtn.removeAttribute('disabled');
-  videoTransferBtn.addEventListener('click', transferVideo);
-  updateVideoButtonState();
+  // transferImageSequence() explain what's missing (no model / no images
+  // yet), while updateSequenceButtonState() below handles the visual dimming.
+  sequenceTransferBtn.removeAttribute('disabled');
+  sequenceTransferBtn.addEventListener('click', transferImageSequence);
+  updateSequenceButtonState();
 
   if (!existingInput && !existingBtn) {
     controlsHost.appendChild(wrapper);
   }
 
   if (existingOutput) {
-    videoOutput = existingOutput;
+    sequenceOutput = existingOutput;
   } else {
-    videoOutput = document.createElement('video');
-    videoOutput.id = 'videoOutput';
-    videoOutput.controls = true;
-    videoOutput.style.maxWidth = `${DISPLAY}px`;
-    videoOutput.style.display = 'none';
-    output.elt.parentNode.appendChild(videoOutput);
+    sequenceOutput = document.createElement('video');
+    sequenceOutput.id = 'videoOutput';
+    sequenceOutput.controls = true;
+    sequenceOutput.style.maxWidth = `${DISPLAY}px`;
+    sequenceOutput.style.display = 'none';
+    output.elt.parentNode.appendChild(sequenceOutput);
   }
 
-  videoDownloadLink = document.createElement('a');
-  videoDownloadLink.textContent = 'Download video';
-  videoDownloadLink.style.display = 'none';
-  videoDownloadLink.style.marginLeft = '8px';
-  videoOutput.parentNode.appendChild(videoDownloadLink);
+  sequenceDownloadLink = document.createElement('a');
+  sequenceDownloadLink.textContent = 'Download video';
+  sequenceDownloadLink.style.display = 'none';
+  sequenceDownloadLink.style.marginLeft = '8px';
+  sequenceOutput.parentNode.appendChild(sequenceDownloadLink);
 }
 
-// Visually dims the video button when a model or video hasn't been loaded
-// yet, WITHOUT using the disabled attribute — so clicks still register and
-// transferVideo()'s own checks can tell the user exactly what's missing.
-function updateVideoButtonState() {
-  if (!videoTransferBtn) return;
-  const ready = !!pix2pix && !!uploadedVideo;
-  videoTransferBtn.classList.toggle('is-disabled', !ready);
-  videoTransferBtn.setAttribute('aria-disabled', String(!ready));
+// Visually dims the sequence button when a model or image sequence hasn't
+// been loaded yet, WITHOUT using the disabled attribute -- so clicks still
+// register and transferImageSequence()'s own checks can tell the user
+// exactly what's missing.
+function updateSequenceButtonState() {
+  if (!sequenceTransferBtn) return;
+  const ready = !!pix2pix && uploadedImageFiles.length > 0;
+  sequenceTransferBtn.classList.toggle('is-disabled', !ready);
+  sequenceTransferBtn.setAttribute('aria-disabled', String(!ready));
 }
 
 function draw() {
@@ -228,7 +231,7 @@ function handleModelFile(evt) {
 
   transferBtn.attribute('disabled', '');
   pix2pix = null; // old model is no longer valid while the new one loads
-  updateVideoButtonState();
+  updateSequenceButtonState();
   statusMsg.html('Loading model... Please wait...');
 
   currentModelUrl = URL.createObjectURL(file);
@@ -255,7 +258,7 @@ function handleImageFile(evt) {
 function modelLoaded() {
   statusMsg.html('Model Loaded!');
   transferBtn.elt.removeAttribute('disabled');
-  updateVideoButtonState();
+  updateSequenceButtonState();
 }
 
 function clearCanvas() {
@@ -296,58 +299,50 @@ function transfer() {
   });
 }
 
-// ── Video: upload ────────────────────────────────────────────────────────
-function handleVideoFile(evt) {
-  const file = evt.target.files && evt.target.files[0];
-  if (!file) return;
-
-  if (uploadedVideoUrl) {
-    URL.revokeObjectURL(uploadedVideoUrl);
-    uploadedVideoUrl = null;
+// ── Image sequence: upload ──────────────────────────────────────────────
+// Natural sort so "frame2.png" sorts before "frame10.png" instead of after.
+function naturalCompare(a, b) {
+  const ax = [], bx = [];
+  a.replace(/(\d+)|(\D+)/g, (_, d, s) => ax.push([d ? Number(d) : Infinity, s || '']));
+  b.replace(/(\d+)|(\D+)/g, (_, d, s) => bx.push([d ? Number(d) : Infinity, s || '']));
+  while (ax.length && bx.length) {
+    const an = ax.shift(), bn = bx.shift();
+    const nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
+    if (nn) return nn;
   }
-  uploadedVideo = null;
-  updateVideoButtonState();
+  return ax.length - bx.length;
+}
 
-  const url = URL.createObjectURL(file);
-  uploadedVideoUrl = url;
+function handleImageFolder(evt) {
+  const files = Array.from(evt.target.files || []).filter(f => f.type.startsWith('image/'));
 
-  const video = document.createElement('video');
-  video.muted = true;
-  video.playsInline = true;
-  video.preload = 'auto';
-  video.style.display = 'none';
-  document.body.appendChild(video); // some browsers need it in the DOM to decode frames reliably
+  uploadedImageFiles = files.sort((a, b) => {
+    const an = a.webkitRelativePath || a.name;
+    const bn = b.webkitRelativePath || b.name;
+    return naturalCompare(an, bn);
+  });
 
-  video.addEventListener('loadedmetadata', () => {
-    uploadedVideo = video;
-    updateVideoButtonState();
-    const frameCount = Math.min(MAX_VIDEO_FRAMES, Math.floor(video.duration * VIDEO_SAMPLE_FPS));
+  updateSequenceButtonState();
+
+  if (uploadedImageFiles.length === 0) {
+    statusMsg.html('No image files found in that selection.');
+    return;
+  }
+
+  if (uploadedImageFiles.length > MAX_SEQUENCE_FRAMES) {
     statusMsg.html(
-      `Video loaded (${video.duration.toFixed(1)}s, will process ~${frameCount} frames at ${VIDEO_SAMPLE_FPS}fps). ` +
-      (pix2pix ? 'Click "Transfer Video" to begin.' : 'Upload a .pict model file, then click "Transfer Video".')
+      `Found ${uploadedImageFiles.length} images, but only the first ${MAX_SEQUENCE_FRAMES} will be processed.`
     );
-  });
-
-  video.addEventListener('error', () => {
-    statusMsg.html('Could not load that video file.');
-  });
-
-  video.src = url;
-  video.load();
+    uploadedImageFiles = uploadedImageFiles.slice(0, MAX_SEQUENCE_FRAMES);
+  } else {
+    statusMsg.html(
+      `Loaded ${uploadedImageFiles.length} images (will render at ${OUTPUT_FPS}fps). ` +
+      (pix2pix ? 'Click "Transfer Image Sequence" to begin.' : 'Upload a .pict model file, then click "Transfer Image Sequence".')
+    );
+  }
 }
 
-// ── Video: helpers ──────────────────────────────────────────────────────
-function seekVideoTo(video, time) {
-  return new Promise(resolve => {
-    function onSeeked() {
-      video.removeEventListener('seeked', onSeeked);
-      resolve();
-    }
-    video.addEventListener('seeked', onSeeked);
-    video.currentTime = time;
-  });
-}
-
+// ── Image sequence: helpers ──────────────────────────────────────────────
 function pix2pixTransferAsync(canvasEl) {
   return new Promise((resolve, reject) => {
     pix2pix.transfer(canvasEl, (err, result) => {
@@ -409,12 +404,12 @@ function startRecording(canvasEl, fps) {
       const blob = new Blob(chunks, { type: mimeType });
       const url = URL.createObjectURL(blob);
 
-      videoOutput.src = url;
-      videoOutput.style.display = 'block';
+      sequenceOutput.src = url;
+      sequenceOutput.style.display = 'block';
 
-      videoDownloadLink.href = url;
-      videoDownloadLink.download = 'transferred-video.webm';
-      videoDownloadLink.style.display = 'inline';
+      sequenceDownloadLink.href = url;
+      sequenceDownloadLink.download = 'transferred-video.webm';
+      sequenceDownloadLink.style.display = 'inline';
 
       resolve();
     };
@@ -431,36 +426,34 @@ function startRecording(canvasEl, fps) {
   };
 }
 
-// ── Video: per-frame transfer ────────────────────────────────────────────
-async function transferVideo() {
+// ── Image sequence: per-frame transfer ───────────────────────────────────
+async function transferImageSequence() {
   if (!pix2pix) {
     statusMsg.html('Please upload a .pict model file first.');
     return;
   }
-  if (!uploadedVideo) {
-    statusMsg.html('Please upload a video file first.');
+  if (uploadedImageFiles.length === 0) {
+    statusMsg.html('Please upload a folder of images first.');
     return;
   }
-  if (processingVideo) return;
+  if (processingSequence) return;
 
-  processingVideo = true;
-  videoTransferBtn.classList.add('is-disabled');
-  videoOutput.style.display = 'none';
-  videoDownloadLink.style.display = 'none';
+  processingSequence = true;
+  sequenceTransferBtn.classList.add('is-disabled');
+  sequenceOutput.style.display = 'none';
+  sequenceDownloadLink.style.display = 'none';
 
-  const video = uploadedVideo;
-  const fps = VIDEO_SAMPLE_FPS;
-  const duration = video.duration;
-  const totalFrames = Math.min(MAX_VIDEO_FRAMES, Math.max(1, Math.floor(duration * fps)));
+  const files = uploadedImageFiles;
+  const fps = OUTPUT_FPS;
+  const totalFrames = files.length;
 
-  // Two scratch canvases, allocated ONCE and reused every frame. The
-  // previous version created a brand-new full-size (512x512) canvas for
-  // every processed frame and kept them all in an array until the end for
-  // stitching. On longer videos (200+ frames) that built up enough memory
-  // pressure that the browser reclaimed GPU memory and evicted the WebGL
-  // context the pix2pix model's weights live in -- which is what caused the
-  // "Cannot read properties of undefined (reading '...kernel')" errors.
-  // Streaming each frame straight into the recording avoids that entirely.
+  // Two scratch canvases, allocated ONCE and reused every frame, so memory
+  // stays flat regardless of how many images are in the sequence. Streaming
+  // each processed frame straight into the recorder (rather than buffering
+  // every result in an array for stitching at the end) avoids the GPU
+  // memory pressure that used to evict the pix2pix model's WebGL context on
+  // long runs -- the "Cannot read properties of undefined (reading
+  // '...kernel')" errors.
   const frameCanvas = createGraphics(SIZE, SIZE);
   frameCanvas.pixelDensity(1);
   const stitchGfx = createGraphics(DISPLAY, DISPLAY);
@@ -472,8 +465,8 @@ async function transferVideo() {
   } catch (err) {
     console.log(err);
     statusMsg.html('Could not start recording (see console for details).');
-    processingVideo = false;
-    updateVideoButtonState();
+    processingSequence = false;
+    updateSequenceButtonState();
     return;
   }
 
@@ -485,15 +478,21 @@ async function transferVideo() {
   const MAX_RELOAD_ATTEMPTS = 3;      // cap total reloads so a persistently broken setup still gives up eventually
 
   for (let i = 0; i < totalFrames; i++) {
-    const t = Math.min(i / fps, Math.max(0, duration - 0.02));
-    await seekVideoTo(video, t);
+    statusMsg.html(`Loading frame ${i + 1} / ${totalFrames}...`);
 
-    // Draw the current video frame at the model's native resolution.
-    // NOTE: p5's Graphics.image() only unwraps p5.Image/p5.Element objects
-    // (it looks for .canvas or .elt), so it can't handle a raw
-    // HTMLVideoElement like the one created in handleVideoFile(). Drawing
-    // straight to the native 2D context sidesteps that.
-    frameCanvas.drawingContext.drawImage(video, 0, 0, SIZE, SIZE);
+    const objectUrl = URL.createObjectURL(files[i]);
+    let sourceImg;
+    try {
+      sourceImg = await loadImageAsync(objectUrl);
+    } catch (err) {
+      console.log('Frame', i, 'failed to load:', err);
+      URL.revokeObjectURL(objectUrl);
+      continue;
+    }
+
+    // Draw the source image at the model's native resolution.
+    frameCanvas.image(sourceImg, 0, 0, SIZE, SIZE);
+    URL.revokeObjectURL(objectUrl);
 
     statusMsg.html(`Processing frame ${i + 1} / ${totalFrames}...`);
 
@@ -507,7 +506,7 @@ async function transferVideo() {
 
       if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
         if (reloadAttempts >= MAX_RELOAD_ATTEMPTS) {
-          statusMsg.html('The model keeps losing its GPU context and reloading isn\u2019t helping. Try a shorter clip, a lower sample rate, or a different device/browser.');
+          statusMsg.html('The model keeps losing its GPU context and reloading isn\u2019t helping. Try a shorter sequence, a lower resolution, or a different device/browser.');
           break;
         }
 
@@ -520,7 +519,7 @@ async function transferVideo() {
           continue;
         } catch (reloadErr) {
           console.log('Model reload failed:', reloadErr);
-          statusMsg.html('Could not reload the model automatically. Try a shorter clip, or reload the page and try again.');
+          statusMsg.html('Could not reload the model automatically. Try a shorter sequence, or reload the page and try again.');
           break;
         }
       }
@@ -561,6 +560,6 @@ async function transferVideo() {
     statusMsg.html('Could not finish recording the video (see console for details).');
   }
 
-  processingVideo = false;
-  updateVideoButtonState();
+  processingSequence = false;
+  updateSequenceButtonState();
 }

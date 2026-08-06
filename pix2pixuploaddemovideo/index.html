@@ -39,9 +39,9 @@
 
         <input type="file" id="imageFileInput" accept="image/*">
       </label>
-      <label for="videoFileInput">
-        Input video (optional):
-        <input type="file" id="videoFileInput" accept="video/*">
+      <label for="imageFolderInput">
+        Input image sequence (select a folder, or ctrl/cmd-click several frame images):
+        <input type="file" id="imageFolderInput" accept="image/*" multiple webkitdirectory directory>
       </label>
     </div>
 
@@ -61,12 +61,12 @@
       <button id="transferBtn" aria-label="Run the pix2pix model and generate an image from your drawing" disabled>Transfer</button>
     </div>
 
-    <div id="video-app" role="group" aria-label="Video transfer">
-      <button id="videoTransferBtn" class="is-disabled" aria-label="Run the pix2pix model on each frame of the uploaded video and stitch the results back into a video">Transfer Video</button>
+    <div id="video-app" role="group" aria-label="Image sequence transfer">
+      <button id="videoTransferBtn" class="is-disabled" aria-label="Run the pix2pix model on each image in the uploaded folder and stitch the results into a video">Transfer Image Sequence</button>
       <p id="videoStatus" role="status" aria-live="polite"></p>
       <video id="videoOutput"
              controls
-             aria-label="AI-generated video produced by running each frame of your uploaded video through the model."
+             aria-label="AI-generated video produced by running each image in your uploaded folder through the model."
              style="display:none; max-width: 512px;">
       </video>
     </div>
