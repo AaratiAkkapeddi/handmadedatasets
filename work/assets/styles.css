@@ -54,6 +54,7 @@
 #gallery li{
     list-style-type: none;
     width: calc(30% - 5px);
+    height: 90px;
     border: 1px solid var(--primary-color);
 }
 #gallery li h2{
@@ -106,6 +107,7 @@ main{
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
+    padding-bottom:50px;
 }
 span{
     font-family: var(--body);
@@ -121,6 +123,7 @@ a, a:visited, a:hover, a:active{
     padding: 5px 10px;
     text-decoration: none;
     position: fixed;
+    background: var(--background-color);
     bottom:20px;
     right:20px;
     font-family: var(--body);
@@ -136,4 +139,16 @@ iframe{
 h2{
   text-shadow: -1px -1px 0 var(--primary-color), 1px -1px 0 var(--primary-color), -1px 1px 0 var(--primary-color), 1px 1px 0 var(--primary-color);    
   color: var(--background-color);
+}
+
+
+@media(max-width: 600px){
+    :root{
+    --title-size: 32px;
+    --body-size: 18px;
+    --span-size: 17px;
+    }
+    #gallery li{
+        width: calc(50% - 10px);
+    }
 }
