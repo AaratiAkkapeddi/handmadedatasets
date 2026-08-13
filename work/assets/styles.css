@@ -59,6 +59,8 @@
 }
 #gallery li h2{
      font-size: var(--span-size);
+     color: var(--primary-color);
+     text-shadow: none;
 
 }
 #gallery li a{
@@ -97,6 +99,24 @@ span{
     font-family: var(--body);
     display:block;
     font-size: var(--span-size);
+    font-style: italic;
+}
+a, a:visited, a:hover, a:active{
+    color: var(--primary-color);
+}
+#back-button{
+    border: 1px solid var(--primary-color);
+    padding: 5px 10px;
+    text-decoration: none;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    font-family: var(--body);
+    font-size: var(--span-size);
+    font-style: italic;
+}
+.dataset{
+    max-width: 70%;
 }
 
 h2{
