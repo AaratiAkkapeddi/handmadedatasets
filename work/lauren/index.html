@@ -10,30 +10,57 @@
 
 <body>
     <main id="main-content">
-        <span>Beholder of Igoe</span>
-        <h2>Benjamin Santiago</h2>
-
-        <p>Beholder of Igoe is based on the book Physical Computing which contains a diagram of a creature representing
-            "what a computer sees" based on a typical computer's input. The software was meant as a demo to test a
-            larger class structure based on a dungeon crawling adventure, encountering similar monsters derived from
-            historical and contemporary writing about computers and interaction design.</p>
-
+        <span>Head in the clouds</span>
+        <h2>Lauren Malkani</h2>
+        <p><b>Can we use AI to see the world like a child?</b></p>
+        <p>The class asks how handmade datasets — slow, manual, computational processes and small models — can help us
+            understand AI and disrupt its traditional use case as a corporate enhancement to productivity and
+            efficiency. 
+        </p>
+        <p>For me these questions are hyper-personal, so I looked to my daily life to create a dataset that was
+            whimsical and "non-data." I'm fascinated by my four-year-old daughter's view of the world: how she sees
+            things, how she speaks, how she interprets meaning in the people, places, and objects around her. 
+        </p>
+        <p><b>Handmaking Data</b></p>
+        <p>To train the data for pix2pix, you need to model what the input might actually look like. I wanted my model
+            to translate my daughter's drawings into clouds. Eva's drawings are mostly line-based, so I ran an
+            edge-detection script — essentially turning all the cloud photos into line drawings — paired with the real
+            image. This lets the pix2pix model learn to translate lines into realistic cloud images.</p>
         <br><br>
-        <iframe width="100%" height="500px" src="https://benjaminsantiago.com/SFPC/SM26__handmade_datasets/beholder_of_igoe/" title="beholder of igoe"
-            frameborder="0"
+        <img class="dataset" src="./lauren.png" alt="showing the training data" />
+        <br><br>
+        <img class="" src="./lauren2.png" alt="showing the training data gathering process" />
+        <br><br>
+        <p>Once it was trained, I fed the model about 65 of my daughter's drawings that I scanned. Scanning each drawing
+            gave me a chance to really sit with it and see the patterns in her work. Two of her favorite artists are
+            Georgia O'Keeffe and Yayoi Kusama, and I saw many yonic forms similar to O'Keeffe's, and repetitive patterns
+            of dots and circles that came together into complex, Kusama-esque illustrations. I noticed themes and motifs
+            too — more images of houses and families, following our move across the country. Her perspective, her ideas,
+            her influences came through in the slow, manual process of scanning the drawings.</p>
+        <p><b>Clouds for the Future</b></p>
+        <p>What I enjoyed most were the unexpected "glitches" in the clouds, and the "misinterpretation" of the drawings
+            into cloud-like images made of thousands of dots — a result of low resolution and dithering artifacts from
+            the GAN's image scaling.</p>
+        <p>Another beautiful irony: the many dots that made up each image resonated deeply with my daughter, who was
+            delighted to see her favorite Kusama-inspired motif reimagined in her own work — though when I showed her
+            the first few cloud outputs, she said, "they don't look like clouds at all." I do wonder if she'll imagine
+            her drawings in the clouds when she looks up now — or imagine the clusters of dots forming a line, hidden in
+            little imaginary pixels beneath her pencil.</p>
+        <p>If nothing else, these are things that I see now.</p>
+        <br><br>
+        <iframe width="100%" height="500px" src="https://www.laurenmalkani.com/work/head-in-the-clouds/"
+            title="head in the clouds" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
-            <br><br>
-        <img src="./benjamin.png" alt="A pixelated creature with a single eye, a mouth, and one arm.">
-        <p>The training images are from the output of a collection of small, locally trained VQVAE models designed to produce face illustrations. My intention was to produce ML-based, non-deterministic illustrations without fine-tuning or using an existing (dubiously or opaquely trained) model. This was meant to be the beginning of a game-like simulation, as well as to test its efficacy and potential as a teaching tool to create images that reflect the input of small, private, datasets from a class, or similarly-sized group.</p>
-        <img class="dataset" src="./benjamin2.png" alt="showing the training data">
+
+
         </section>
- <br><br>
+        <br><br>
         <section>
             <a href="../#gallery">Back to Participant Work</a>
 
             <a href="../#gallery" id="back-button">Back to Participant Work</a>
- <br><br> <br><br>
+            <br><br> <br><br>
         </section>
     </main>
 
