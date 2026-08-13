@@ -10,23 +10,27 @@
 
 <body>
     <main id="main-content">
-        <span>Beholder of Igoe</span>
-        <h2>Benjamin Santiago</h2>
+        <span>Phantom Limb Blind Visionscape</span>
+        <h2>M. Leona Godin</h2>
 
-        <p>Beholder of Igoe is based on the book Physical Computing which contains a diagram of a creature representing
-            "what a computer sees" based on a typical computer's input. The software was meant as a demo to test a
-            larger class structure based on a dungeon crawling adventure, encountering similar monsters derived from
-            historical and contemporary writing about computers and interaction design.</p>
-
+        <p><b>Blind visionscapes</b></p>
+        <p>From my perspective as a blind person Aarati’s questions immediately made me think of testimonies I’ve been casually collecting for a number of years regarding  what blind people see. They come from books and from friends, some examples include…</p>
+        <p>Jorge Luis Borges: “One of the colors that the blind—or at least this blind man—do not see is black; another is red. Le rouge et le noir are the colors denied us. I, who was accustomed to sleeping in total darkness, was bothered for a long time at having to sleep in this world of mist, in the greenish or bluish mist, vaguely luminous, which is the world of the blind. … The world of the blind is not the night that people imagine.”</p>
+        <p>James Tate Hill: “swirling, kaleidoscopic fragments of green, yellow, and magenta, moving like a time-lapsed image of a distant galaxy…”</p>
+        <p>Plus others—including my own not-black visionscape: Gentle hallucinations--Charles Bonnet Syndrome—undulating over a vibrating snow fuzz, often with blotches or washes of color—neon pink or electric teal.”</p>
+        <p><b>Phantom limb phenomenon</b></p>
+        <p>Probably that would have been enough, but I wanted to also try to represent something even stranger—what we sometimes call the phantom limb phenomenon…</p>
+        <p>Oliver Sacks: “At one time I had a large blind area, a so-called scotoma, in my right eye, and objects would disappear in it. I remember once scotomizing my foot so that I didn't see anything below mid shin, but then as I twiddled my toes, A sort of strange protoplasmic effulgence appeared. Sparkling. And which gradually formed itself into the semblance of a foot—it was a reasonably good foot …So there was this visual phantom.”</p>
+        <p>John Dugdale: “It's such a marvelous feeling. I remember being in church at St. Luke in the Fields and I looked down at my hands and it was almost like I could see an x-ray of them.”</p>
         <br><br>
-        <iframe width="100%" height="500px" src="https://benjaminsantiago.com/SFPC/SM26__handmade_datasets/beholder_of_igoe/" title="beholder of igoe"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-            <br><br>
-        <img src="./benjamin.png" alt="A pixelated creature with a single eye, a mouth, and one arm.">
-        <p>The training images are from the output of a collection of small, locally trained VQVAE models designed to produce face illustrations. My intention was to produce ML-based, non-deterministic illustrations without fine-tuning or using an existing (dubiously or opaquely trained) model. This was meant to be the beginning of a game-like simulation, as well as to test its efficacy and potential as a teaching tool to create images that reflect the input of small, private, datasets from a class, or similarly-sized group.</p>
-        <img class="dataset" src="./benjamin2.png" alt="showing the training data">
+        <img src="./leona.png" alt="A pixelated creature with a single eye, a mouth, and one arm.">
+        <br><br>
+        <p><b>Dataset style guide</b></p>
+        <p>I created a style guide for ChatGPT/DALL-E to create some images that included both the first-person phantom limbs and the overall visionscapes. This turned out to be more challenging and time-consuming than I imagined—especially the first-person POV. not least because I could not trust ChatGPT’s descriptions of what it made. I enlisted Claude to describe and to help me refine my instructions.</p>
+        <p>I also asked my partner, Alabaster Rhumb to add some color blotches, though I realized after the fact that I neglected to tell him that they never drifted offscreen so to speak—they occupy quadrants but are always complete blotches—a good reminder that it’s hard to know what the parameters are until people or machines start interpreting your words in ways you couldn’t have anticipated! </p>
+        <p>Because this phenomenon is tied so closely with proprioception, I thought at first I would use a gesture transformation, but then I wasn’t sure what kind of input I would use. And I also wasn’t sure what the message behind the Pix2Pix would be. Then I thought that using very dark greyscale would be more to the point, but I didn’t quite get there. So I just did greyscale and I think the transformation ended up being too easy for the model .</p>
+        <p>I’m holding out the possibility of returning to my pict model with black or nearly black photographs. With little to no visual input, would the machine start hallucinating phantom limbs and colorful  visionscapes, too?</p>
+        <img class="" src="./leona2.png" alt="showing the training data">
         </section>
  <br><br>
         <section>

@@ -10,24 +10,101 @@
 
 <body>
     <main id="main-content">
-        <span>Beholder of Igoe</span>
-        <h2>Benjamin Santiago</h2>
+        <span>Alien Archive</span>
+        <h2>Una Zhang</h2>
 
-        <p>Beholder of Igoe is based on the book Physical Computing which contains a diagram of a creature representing
-            "what a computer sees" based on a typical computer's input. The software was meant as a demo to test a
-            larger class structure based on a dungeon crawling adventure, encountering similar monsters derived from
-            historical and contemporary writing about computers and interaction design.</p>
+        <p>For this project, I compiled dumpling names from two sources: historic cookbooks from the Internet Archive and contemporary recipe names scraped from recipe websites, online cookbooks, and food blogs.</p>
+        <p><b>1st pass</b></p>
+        <p>The first dataset consisted almost entirely of historic cookbook data. The model generated "Apple" repeatedly because Apple Dumpling appeared 489 times out of 1,709 entries (29% of the dataset). This reflects the dominance of apple dumplings in English cookbooks before the 20th century. More broadly, the word dumpling in these sources referred mainly to British dumplings rather than the East Asian dumplings the term is more commonly associated with today.</p>
+        <ul>
+            <li>sample 1: Apple </li>
+            <li>sample 2: Apple </li>
+            <li>sample 3: Baked Apple</li>
+            <li>sample 4: Apple</li>
+            <li>sample 5: Apple</li>
+            <li>sample 6: Lemmon</li>
+            <li>sample 7: Suet</li>
+            <li>sample 8: Apple</li>
+            <li>sample 9: Baked Apple </li>
+            <li>sample 10: Apple </li>
+            <li>sample 11: Baked Apple </li>
+            <li>sample 12: Apple </li>
+            <li>sample 13: Peach </li>
+            <li>sample 14: Apple </li>
+            <li>sample 15: Apple </li>
+            <li>sample 16: Apple </li>
+            <li>sample 17: Apple </li>
+            <li>sample 18: Apple </li>
+            <li>sample 19: Apple </li>
+            <li>sample 20: Apple</li>
+        </ul>
 
-        <br><br>
-        <iframe width="100%" height="500px" src="https://benjaminsantiago.com/SFPC/SM26__handmade_datasets/beholder_of_igoe/" title="beholder of igoe"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-            <br><br>
-        <img src="./benjamin.png" alt="A pixelated creature with a single eye, a mouth, and one arm.">
-        <p>The training images are from the output of a collection of small, locally trained VQVAE models designed to produce face illustrations. My intention was to produce ML-based, non-deterministic illustrations without fine-tuning or using an existing (dubiously or opaquely trained) model. This was meant to be the beginning of a game-like simulation, as well as to test its efficacy and potential as a teaching tool to create images that reflect the input of small, private, datasets from a class, or similarly-sized group.</p>
-        <img class="dataset" src="./benjamin2.png" alt="showing the training data">
-        </section>
+        <p><b>2nd pass</b></p>
+        <p>I added around 100 contemporary dumpling names and capped each historic recipe at ten repetitions. While this reduced the dominance of Apple Dumpling, the outputs were still fairly generic because the historic names remained overrepresented.</p>
+        <ul>
+            <li>sample 1: Chicken</li>
+            <li>sample 2: Steam</li>
+            <li>sample 3: Suet</li>
+            <li>sample 4: Gammon</li>
+            <li>sample 5: Pigeon</li>
+            <li>sample 6: Damson</li>
+            <li>sample 7: Cheese</li>
+            <li>sample 8: Damson</li>
+            <li>sample 9: Marrow</li>
+            <li>sample 10: Potato</li>
+            <li>sample 11: Currant</li>
+            <li>sample 12: Baked Apple</li>
+            <li>sample 13: Steam</li>
+            <li>sample 14: Steamed</li>
+            <li>sample 15: Damassa</li>
+            <li>sample 16: Pigeon</li>
+            <li>sample 17: Lemon</li>
+            <li>sample 18: Hard</li>
+            <li>sample 19: Drop</li>
+            <li>sample 20: Peach</li>
+            <li>sample 21: Plain Suet</li>
+            <li>sample 22: Ball</li>
+            <li>sample 23: Suet</li>
+        </ul>
+
+        <p><b>3rd pass</b></p>
+        <p>The final dataset contained 542 unique dumpling names: 162 historic names from the Internet Archive and 380 contemporary names from eight scraped recipe sources. Compared to the historic dataset, the contemporary names contain more descriptors: introduced greater variety in ingredients, cooking methods, transliterated names such as momo and har gow, and expressive spelling online. As a result, the model generated outputs like "Fried Beeeeeef Dum..." and "Steamed Pork..." while also producing hybrids such as "Homo," where it recombined unfamiliar character sequences and naming conventions.</p>
+        
+        <ul>
+            <li>sample 1: Boiled Chile Dum</li>
+            <li>sample 2: Steamed Pork Dum</li>
+            <li>sample 3: Siocot Dumpling</li>
+            <li>sample 4: Dumpling Stean R</li>
+            <li>sample 5: Steamed Pork ark</li>
+            <li>sample 6: Steamed Beeefor</li>
+            <li>sample 7: Perry Dumpling</li>
+            <li>sample 8: Chicken and Stea </li>
+            <li>sample 9: Pork and Chicken</li>
+            <li>sample 10: Fried Beeeeeef D </li>    
+            <li>sample 11: Lemon Dumpling </li>   
+            <li>sample 12: Beef and Cantear </li>
+            <li>sample 13: Coubang Dumpling </li>
+            <li>sample 14: Pert Dumpling </li>
+            <li>sample 15: Rashe Pet Dumpli</li>
+            <li>sample 16: Chinese Dumpling</li>
+            <li>sample 17: Steamed Dumpling</li>
+            <li>sample 18: Momamed Dumpling</li>
+            <li>sample 19: Homemade Pork Du</li>
+            <li>sample 20: Chicken Dumpling</li>
+            <li>sample 21: Pork and Chives</li>
+            <li>sample 22: Fried Pota Dumpl</li>
+            <li>sample 23: Chicken Dumpling</li>
+            <li>sample 24: Pejater Pork and</li>
+            <li>sample 25: Steamed Dumpling</li>
+            <li>sample 26: Steamed Poth Dum</li>
+            <li>sample 27: Banton Dumpling</li>
+            <li>sample 28: Boiled Basary Du</li>
+            <li>sample 29: Steamed Purrkl D</li>
+            <li>sample 30: Homo</li>
+            <li>sample 31: Boiled Great Dum </li>
+        </ul>
+
+    </section>
  <br><br>
         <section>
             <a href="../#gallery">Back to Participant Work</a>
