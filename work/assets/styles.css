@@ -78,7 +78,7 @@
     background-blend-mode: normal;
 }
 #gallery li a:hover h2{
-    text-shadow: -1px -1px 0 var(--background-color), 1px -1px 0 var(--background-color), -1px 1px 0 var(--background-color), 1px 1px 0 var(--background-color);
+    text-shadow: -1px -1px 5px var(--background-color), 1px -1px 5px var(--background-color), -1px 1px 5px var(--background-color), 1px 1px 5px var(--background-color);
 }
 p{
     line-height: 1.5;
