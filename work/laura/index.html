@@ -16,15 +16,27 @@
         <p>Laura took field recordings of birdsongs in an area of planned data center site in upstate NY. Laura’s pix2pix dataset comprised of spectrograms from these recordings paired with edge detection versions of these images allowing the model to learn how to go from black and white minimal image → spectrogram. This allowed Laura to build a web application where one could generate spectrograms from their drawings and then using Javascript, convert those spectrograms back into audio. As I play with the application I am struck by how similar all the audio sounds to birdsong, or the original source material. </p>
 
         <br><br>
-                <img class="dataset" src="./laura2.png" alt="showing the training data">
-<br><br>
-        <img src="./laura.png" alt="A pixelated creature with a single eye, a mouth, and one arm.">
+                <img class="dataset" src="./output1.png" alt="showing the training data">
+                <span>generated output converted to audio:</span>
+                <audio controls>
+                    <source src="./Audio_1.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <img class="dataset" src="./output2.png" alt="showing the training data">
+                <span>generated output converted to audio:</span>
+                <audio controls>
+                    <source src="./Audio_2.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+
+       
 <br><br>
         <iframe width="100%" height="500px" src="https://cortes-rico.com/dev/p2p/" title="laura cortes-rico"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
             <br><br>
+             <img src="./laura2.png" alt="Screenshots from web application showing a drawing of a bird, the generated spectrogram, and the audio player to play the generated sound.">
         </section>
  <br><br>
         <section>
