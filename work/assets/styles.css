@@ -47,13 +47,13 @@
 #gallery{
     display:flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding:0;
     gap:10px;
 }
 #gallery li{
     list-style-type: none;
-    width: calc(30% - 5px);
+    width: calc(24% - 5px);
     height: 90px;
     border: 1px solid var(--primary-color);
 }
