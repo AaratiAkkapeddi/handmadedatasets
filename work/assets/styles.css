@@ -108,8 +108,9 @@ main img{
 }
 main{
     padding: 20px;
-    max-width: 800px;
+    max-width: calc(90% - 40px);
     margin: 0 auto;
+        margin-left: 20%;
     padding-bottom:50px;
 }
 span{
@@ -142,6 +143,7 @@ iframe{
 h2{
   text-shadow: -1px -1px 0 var(--primary-color), 1px -1px 0 var(--primary-color), -1px 1px 0 var(--primary-color), 1px 1px 0 var(--primary-color);    
   color: var(--background-color);
+  margin-top: 10px;
 }
 
 
@@ -153,5 +155,12 @@ h2{
     }
     #gallery li{
         width: calc(50% - 10px);
+    }
+    main{
+
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+        margin-left: auto;
+
     }
 }

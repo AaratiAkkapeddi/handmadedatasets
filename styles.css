@@ -127,7 +127,7 @@ main li{
 }
 #hand{
     float:right;
-    max-width: 50%;
+    max-width: 35%;
 }
 section{
     border-bottom: 1px solid var(--text-color);
