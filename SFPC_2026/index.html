@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handmade Datasets</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav aria-label="Primary navigation">
+        <h1>
+            <a href="./" aria-label="Handmade Datasets homepage">
+                <img src="./assets/hand_left.png"
+                    alt="A pixelated left hand reaching outward" />Handmade<br>Datasets<img
+                    src="./assets/hand_right.png" alt="A pixelated right hand reaching outward" />
+            </a>
+        </h1>
+        <button class="hamburger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+            aria-controls="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="./">Home</a></li>
+            <li><a href="./schedule.html">Weekly Schedule</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+            <li><a href="./resources.html">Resources</a></li>
+            <li><a href="./chapter.html">The chapter</a></li>
+            <li><a href="./work/">Past Student Work</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <h1>Handmade Datasets: Strategies for working critically with small data and Artificial Intelligence</h1>
+        <p>
+            <em>Handmade Datasets is currently running as a course taught by <a href="https://aarati.online/"
+                    target="_blank">Aarati Akkapeddi</a> with <a href="https://isabellahaid.com/"
+                    target="_blank">Isabella Haid</a> at <a href="https://sfpc.study/" target="_blank">School for Poetic
+                    Computation.</a></em><br>
+            <em>Previously, it was taught by Aarati Akkapeddi at <a href="https://grayarea.org/" target="_blank">Gray
+                    Area</a></em>
+        </p>
+        <p>Class Hours: Section 1, Sundays 6:30 – 9:00pm | Section 2, Wednesdays 6:30 – 9:00pm</p>
+        <p>Instructor email: aarati.akkapeddi[at]gmail.com</p>
+        <p>Class Recordings: <a
+                href="https://drive.google.com/drive/folders/1ECQnUH8zacFnzK5CJLSd_2NRJ2Q0bDlv?usp=drive_link"
+                target="_blank">Section 1</a> | <a
+                href="https://drive.google.com/drive/folders/1pnwXb7B6RkgwTY0S1lo_LE1J8w6XKCyS?usp=drive_link"
+                target="_blank">Section 2</a></p>
+        <p><a href="https://docs.google.com/document/d/15Ag4azZAaa536_lmESFvo_gQ9rEiW0zL2XWnVp355h4/edit?tab=t.0#heading=h.bu1weh4guphn" target="_blank">SFPC Community Agreements</a></p>
+       <p><a target="_blank" href="https://www.are.na/aarati-akkapeddi/handmade-datasets">Are.na Channel</a></p>
+        <img src="./assets/handmade_datasets.png"
+            alt="on the left is a photograph of Aarati's mother surrounded by blurry generated images of faces that look somewhat like her. On the right is a screenshot of Aarati's desktop with a folder open with multiple image files and another window open with a photo of physical family photographs scattered on a table"
+            class="header-image" />
+        <p>This course unpacks the data pipeline behind large AI systems like Stable Diffusion by tracing the journey
+            from web scraping to generation. We'll examine each step: how websites get crawled and archived, how images
+            and their alt-text descriptions become training material, how click-workers and automated systems curate
+            data, and how all of this shapes what a model generates. We'll then propose an alternative: "handmade
+            datasets," or human-scale, personally assembled datasets, small enough that creators can handle each
+            datapoint. Drawing on examples from artists like Anna Ridler and Stephanie Dinkins as well as events like
+            the Dataset Farmers Market, we'll explore how slowness can be a form of resistance, creating space for
+            consent, stewardship, and intentionality. Students will learn practical techniques for training models with
+            limited data, including data augmentation, transfer learning, GANs, LoRA fine-tuning, RAVE and RAG. Through
+            hands-on projects and critical discussion, students will develop both the technical capability to work with
+            small-scale ML and a more nuanced understanding of data collection and the labor behind AI systems. By the
+            end of the intensive, participants will have created their own handmade dataset and trained a custom model.
+        </p>
+        <p>Students will complete weekly assignments to gradually build text, image, and audio models, expanding on one
+            to work with as a final project. Participants can expect to spend 3-4 hours weekly on work outside of class.
+        </p>
+        <h3>By the end of this intensive, students will:</h3>
+        <ul>
+            <li>Understand the full pipeline of text-to-image AI systems, from web scraping through training to
+                generation, and recognize how dataset composition shapes model outputs and reproduces social biases</li>
+            <li>Gain hands-on experience with multiple approaches to training image models with small datasets: GANs,
+                LoRA fine-tuning, RAG, RAVE</li>
+            <li>Learn methods for collecting, organizing, and augmenting personal datasets, and understand data
+                augmentation vs. transfer learning vs. training from scratch</li>
+            <li>Develop insight into where training data comes from (ImageNet, LAION-5B, FFHQ), the hidden labor behind
+                large-scale AI (click-workers, exploitation), and how to center consent, ownership, and stewardship when
+                working with data</li>
+            <li>Create a personally meaningful handmade dataset and train a custom model</li>
+            <li>Explore how slowness can be a form of resistance and intentionality in data collection</li>
+            <li>Learn to troubleshoot common technical challenges (mode collapse, training instability, computational
+                limits, dataset balance) and make informed decisions about model selection based on available resources
+                and ethical considerations</li>
+            <li>Connect critical theory with hands-on technical practice</li>
+            <li>Build capacity to critically evaluate AI systems and their outputs through understanding their
+                construction</li>
+            <li>Connect with others exploring small-scale, intentional approaches to ML and build a supportive network
+                for continued experimentation</li>
+
+        </ul>
+                <p>No prior machine learning or advanced coding experience required. Students should be comfortable with basic
+            computer literacy (file management, running applications) and have a willingness to experiment with new
+            tools. We will focus on understanding concepts, collecting meaningful data, and remixing existing code
+            rather than writing algorithms from scratch. An interest in questions around data ethics, labor,
+            representation, personal archives, or critical approaches to technology is encouraged.</p>
+
+        <h2>Accessibility and Support</h2>
+        <p>I am committed to making this course accessible to all students. If you have any specific needs or accommodations you would like to discuss, please reach out to me directly or through the <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSemr7_WoAv15aoD6C4x89KtouvJgsTGlLIWoe-g_vRpnMxQyw/viewform?usp=send_form">Intake
+                        form</a>.</p>
+        <p>I am committed to writing alt-text for all media on this website and on Google Slides.</p>
+        <p>Online class can be difficult on the body. While I will do my best to provide opportunities for breaks, please don't hesitate to advocate for more, or to take them as you need.</p>
+        <p>Keeping your camera on is of course welcome but not required.</p>
+        <p><a
+                href="https://docs.google.com/document/d/1Z_UuT-_HsgxydPzk9n9zlsvOUEY-WLx0Y4DG0x6kKMM/edit?tab=t.0#heading=h.bu1weh4guphn">Link
+                to SFPC Student Resource Guide</a></p>
+        <p>For additional support, including:</p>
+        <ul>
+            <li>1-on-1 sessions</li>
+            <li>Mental health resources</li>
+            <li>Community Agreement concerns</li>
+        </ul>
+        <p>
+            You may reach out to SFPC's community counselor, Ngozi Alston (they/them)<br>
+            Discord: @ngwagwa<br>
+            E-mail: community@sfpc.study<br>
+            Calendly booking page in welcome email + pinned in the "general" channel<br>
+        </p>
+
+        </p>
+
+
+
+        <section aria-labelledby="disclaimer-heading">
+            <h2 id="disclaimer-heading">Disclaimer</h2>
+            <p>While this class works primarily with Google Colab and Google Drive, there are alternatives to Google
+                when it comes to working with ML that will be shared as resources to explore in the future.
+                Students will need to purchase compute units from Google Colab in order to run ML training processes.
+                It's completely up to each student how much they would like to spend but it is recommended to budget
+                $30-45 towards compute units. I recommend using the pay-as-you-go option. </p>
+        </section>
+        <section aria-labelledby="community-guidelines">
+            <h2 id="community-guidelines">Collective Class Community Guidelines</h2>
+            <ul>
+                <li>Love your bugs 🐝 Mistakes are learning opportunities. Learning is messy and imperfect.</li>
+                <li>Mode collapse is beautiful</li>
+                <li>Practice and practice - “the parable of the pottery class” where quantity leads to quality</li>
+                <li>Enhance the glitch</li>
+                <li>Be respectful - to others AND yourself. Be kind.</li>
+                <li>Speak up during critiques -- if you tend to be quieter, push yourself to give feedback, if you tend to speak up, push yourself to listen</li>
+                <li>Ask questions along with giving feedback</li>
+                <li>Sometimes questions reveal even more than comments/direct observations</li>
+                <li>Be open to criticism </li>
+                <li>Be curious!</li>
+                <li>There are no stupid questions </li>
+                <li>Ask a human/each other first? (before asking claude/chatgpt/insert-corporate-llm-here ?)</li>
+                <li>Share often - learn from each other’s process</li>
+                <li>Be generous and kind</li>
+                <li>Bring your background(cultural, work history, studies) into the work</li>
+                <li>Diversity of perspectives is a strength</li>
+                <li>Assume best intent +1</li>
+                <li>Be aware of, and true to, yourself in the context of the work (positionality- histories, realities, experiences)</li>
+                <li>Be honest about areas of expertise and lack</li>
+                <li>Offer content warnings when discussing sensitive topics (but assume best intent if someone doesn’t/ forgets to)</li>
+                <li>Practice active listening and provide feedback especially in small group breakouts</li>
+                <li>Take care of our bodies -- take breaks when we need to </li>
+                <li>Different days bring different vibes and that’s ok, creativity isn’t automatic</li>
+                <li>Be present</li>
+                <li>Class is a pool → (the waves we make affect each other)</li>
+                <li>Be open to not knowing what to do (or what to do next), expect uncertainty</li>
+                <li>Have compassion for yourself and others</li>
+                <li>Things suck right now and we’re all trying our best</li>
+                <li>Unlearn ableism </li>
+                <li>Don’t chastise yourself for (temporarily) using Google Services GPUs :p</li>
+                <li>Center our shared humanity</li>
+                <li>Critique the work, not the person</li>
+            </ul>
+            <a href="https://docs.google.com/document/d/15Ag4azZAaa536_lmESFvo_gQ9rEiW0zL2XWnVp355h4/edit?tab=t.0#heading=h.bu1weh4guphn">Link to SFPC-wide Community Agreements </a>
+        </section>
+        <section class="schedule" aria-labelledby="schedule-heading">
+            <h2 id="schedule-heading">Course Schedule</h2>
+            <p>Go to "weekly schedule" in the nav</p>
+        </section>
+    </main>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('open');
+                hamburger.classList.toggle('open');
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
