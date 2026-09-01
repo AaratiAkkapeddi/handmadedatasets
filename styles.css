@@ -25,15 +25,55 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Avara_Bold';
+    src:    url('../../fonts/Bold/Avara-Bold.eot');
+    src:    url('../../fonts/Bold/Avara-Bold.eot?#iefix') format('embedded-opentype'),
+            url('../../fonts/Bold/Avara-Bold.woff') format('woff'),
+            url('../../fonts/Bold/Avara-Bold.woff2') format('woff2'),
+            url('../../fonts/Bold/Avara-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avara_Bold Italic';
+    src:    url('../../fonts/BoldItalic/Avara-Bold_Italic.eot');
+    src:    url('../../fonts/BoldItalic/Avara-Bold_Italic.eot?#iefix') format('embedded-opentype'),
+            url('../../fonts/BoldItalic/Avara-Bold_Italic.woff') format('woff'),
+            url('../../fonts/BoldItalic/Avara-Bold_Italic.woff2') format('woff2'),
+            url('../../fonts/BoldItalic/Avara-Bold_Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avara_Black';
+    src:    url('../../fonts/Black/Avara-Black.eot');
+    src:    url('../../fonts/Black/Avara-Black.eot?#iefix') format('embedded-opentype'),
+            url('../../fonts/Black/Avara-Black.woff') format('woff'),
+            url('../../fonts/Black/Avara-Black.woff2') format('woff2'),
+            url('../../fonts/Black/Avara-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 :root{
     --primary-color: #e8ece1;
     --secondary-color: #171616;
     --background-color: #171616;
     --text-color: #c0c0c0;
-    --font-family: "Maple Mono", monospace;
+    --font-family: monospace;
     --unit: 1rem;
     --font-size-body: 18px;
     --font-size-heading: 24px;
+    --title: 'Avara_Bold';
+    --title-italic: 'Avara_Bold Italic';
+    --title-black: 'Avara_Black';
+        --title-size: 50px;
+    --span-size: 16px;
+}
+.tiny-text{
+    font-size: var(--span-size);
 }
 a, a:link, a:visited {
     color: var(--text-color);
@@ -44,12 +84,17 @@ a:hover{
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--text-color);
-    font-family: "WonderType", sans-serif;
+    font-family: var(--title);
     margin-top: 0;
     font-size: var(--font-size-heading);
 }
 h1{
-    font-size: 32px;
+    font-size: var(--title-size);
+}
+main h1{
+  text-shadow: -1px -1px 0 var(--primary-color), 1px -1px 0 var(--primary-color), -1px 1px 0 var(--primary-color), 1px 1px 0 var(--primary-color);    
+  color: var(--background-color);
+      font-size: var(--title-size);
 }
 .img-fluid {
     max-width: 100%;
@@ -72,6 +117,17 @@ body{
     font-family: var(--font-family);
     font-size: var(--font-size-body);
     margin: 0;
+
+}
+p, li{
+    line-height: 1.5;
+}
+main li{
+    margin-bottom: 0.5rem;
+}
+#hand{
+    float:right;
+    max-width: 50%;
 }
 section{
     border-bottom: 1px solid var(--text-color);
@@ -88,6 +144,7 @@ nav{
     justify-content: flex-start;
     gap: 1rem;
     position: fixed;
+    font-size: var(--span-size);
     top: 0;
     height: calc(100vh - (var(--unit) * 2));
     flex-direction: column;
