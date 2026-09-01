@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handmade Datasets</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav aria-label="Primary navigation">
+        <h1>
+             <a href="./" aria-label="Handmade Datasets homepage">
+                <img src="./assets/hand_left.png" alt="A pixelated left hand reaching outward"/>Handmade<br>Datasets<img src="./assets/hand_right.png" alt="A pixelated right hand reaching outward"/>
+            </a>
+        </h1>        <button
+            class="hamburger"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="./">Home</a></li>
+            <li><a href="./schedule.html">Weekly Schedule</a></li>
+            <li><a href="./projects.html">Assignments</a></li>
+            <li><a href="./resources.html">Resources</a></li>
+            <li><a href="./chapter.html">The chapter</a></li>
+            <li><a href="./work/">Past Student Work</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <h1>Handmade Dataset Final Project</h1>
+
+<p>
+  The final project constitutes 40% of your total grade and represents the culmination of this course’s mission to move beyond the passive consumption of large-scale AI and toward a practice of intentional, critical making with small custom models and handmade datasets. While the first part of the semester focuses on rapid experimentation through quick and creatively constrained projects, this final project gives you the time and space to more deeply develop your own handmade dataset and custom trained model that reflect your personal interests and areas of critical inquiry. You will create a project that incorporates a model trained on your own handmade dataset. You can use any of the methods or a combination of methods we covered thus far in class for your final project. You are welcome to create work in the realm of art or design. Because building handmade datasets and training takes time, labor and a lot of trial and error. Your dataset may not work the way you expect. Your model may produce unexpected results. You may discover that your dataset needs to change, that you need more or different data, or that another training approach makes more sense. Therefore, we will spend the majority of the semester on this one final handmade dataset project. We will guide you through this project in four milestones:
+</p>
+
+<hr style="border: 0; border-top: 1px solid black; margin: 2rem 0;" />
+
+<!-- MILESTONE 1 -->
+<section style="margin-bottom: 2rem;">
+  <h2>Milestone 1 [Week 9]: Present Final Concept, datasheet and data samples</h2>
+  <p>The focus of this first step is to define your creative direction and begin the documentation process that will anchor your project. This milestone is worth 10% of your final grade.</p>
+  
+  <ol>
+    <li>
+      <strong>Your Project Idea (5 Points)</strong> - A presentation of your creative goal and the "why" behind your project—the inspiration that drives you.
+    </li>
+    <li>
+      <strong>Your Datasheet (5 Points)</strong> - A form that is designed to help you think through provenance, privacy, and context when it comes to the specific details of your data.
+    </li>
+  </ol>
+</section>
+
+<hr style="border: 0; border-top: 1px solid black; margin: 2rem 0;" />
+
+<!-- MILESTONE 2 -->
+<section style="margin-bottom: 2rem;">
+  <h2>Milestone 2 [Week 11]: Present dataset (should be at least 70% complete)</h2>
+  <p>At this stage, you move from planning into the active, intentional labor of collection. This milestone is worth 10% of your final grade.</p>
+  
+  <ol>
+    <li>
+      <strong>Completing Your Dataset (5 Points)</strong> - Evidence that at least 70% of your total data has been collected and is ready for use.
+    </li>
+    <li>
+      <strong>Data Quality &amp; Balance (5 Points)</strong> - A demonstration of how you organized and balanced your data so the model can learn from it effectively.
+    </li>
+  </ol>
+</section>
+
+<hr style="border: 0; border-top: 1px solid black; margin: 2rem 0;" />
+
+<!-- MILESTONE 3 -->
+<section style="margin-bottom: 2rem;">
+  <h2>Milestone 3 [Week 13]: Training Progress Check-in (you should have done one pass at training)</h2>
+  <p>This milestone marks your first technical engagement with the model using your custom data. This milestone is worth 10% of your final grade.</p>
+  
+  <ol>
+    <li>
+      <strong>First Training Run (5 Points)</strong> - The results of your first pass at training. You must show the initial output generated by the model.
+    </li>
+    <li>
+      <strong>Adapting Your Plan (5 Points)</strong> - A description of how your project changed or shifted based on the discoveries made during that first pass.
+    </li>
+  
+  </ol>
+</section>
+
+<hr style="border: 0; border-top: 1px solid black; margin: 2rem 0;" />
+
+<!-- MILESTONE 4 -->
+<section style="margin-bottom: 2rem;">
+  <h2>Milestone 4: Your Finished Work (Weeks 14-15)</h2>
+  <p>You will share your finished project and your reflections with the class and in the showcase. This milestone is worth 10% of your final grade.</p>
+  
+  <ol>
+    <li>
+      <strong>Your Finished Work (5 Points)</strong> - The final version of your model, project, or website interface.
+    </li>
+    <li>
+      <strong>Class Presentation (5 Points)</strong> - A presentation explaining the journey, the dataset composition, your technical discoveries,what you learned about data ethics and the specific time and labor it took to build your dataset.
+    </li>
+  </ol>
+</section>
+
+
+    </main>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', String(!expanded));
+                navMenu.classList.toggle('open');
+                hamburger.classList.toggle('open');
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
