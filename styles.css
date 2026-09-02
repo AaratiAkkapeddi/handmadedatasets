@@ -209,6 +209,9 @@ nav .nav-menu {
     padding: 0;
     flex-direction: column;
 }
+#experiments h2{
+    text-transform: uppercase;
+}
 nav h1 img{
     height: 24px;
     width: auto;
