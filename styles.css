@@ -69,7 +69,7 @@
     --title: 'Avara_Bold';
     --title-italic: 'Avara_Bold Italic';
     --title-black: 'Avara_Black';
-        --title-size: 50px;
+    --title-size: 50px;
     --span-size: 16px;
 }
 .tiny-text{
@@ -87,6 +87,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--title);
     margin-top: 0;
     font-size: var(--font-size-heading);
+}
+h3{
+    margin-top: 5rem;
 }
 h1{
     font-size: var(--title-size);
@@ -119,6 +122,7 @@ body{
     margin: 0;
 
 }
+
 #schedule-weeks > li{
     margin-bottom: 2rem;
 
@@ -242,6 +246,9 @@ main > *{
     :root{
         --font-size-body: 16px;
         --font-size-heading: 18px;
+    --title-size: 30px;
+    --span-size: 16px;
+
     }
     h1{
         font-size: 22px;
@@ -310,6 +317,11 @@ main > *{
         margin-left: 0;
         margin-top: 80px;
     }
+    main h1{
+  text-shadow: none;    
+  color: var(--primary-color);
+      font-size: var(--title-size);
+}
 }
 
 html {
@@ -337,13 +349,13 @@ html {
     z-index: 1000;
     text-decoration: none;
 }
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 1rem 0;
+
+table{
+    margin:0 auto;
+    margin-bottom: 2rem;
 }
-table, th, td {
-    border: 1px solid var(--text-color);
+th, td {
+    outline: 1px solid var(--text-color);
 }
 th, td {
     padding: 0.5rem;
