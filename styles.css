@@ -203,7 +203,7 @@ nav h1 a, nav h1{
 }
 nav .nav-menu {
     display: flex;
-    gap: 1rem;
+    gap: 3px;
     list-style: none;
     margin: 0;
     padding: 0;
