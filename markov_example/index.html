@@ -70,9 +70,12 @@
         <div class="field">
           <label for="ngram">An n-gram is just a chunk of n consecutive words from your text (a 1-gram is a single word, a 2-gram is a pair, and so on). In a Markov chain, n controls how much context the model remembers before predicting the next word. lower n makes output looser and more random, higher n keeps it closer to the original phrasing but needs more source text to work well.</label>
           <select id="ngram">
+            <option value="1">1-gram</option>
             <option value="2">2-gram</option>
             <option value="3" selected>3-gram</option>
             <option value="4">4-gram</option>
+            <option value="5">5-gram</option>
+            <option value="6">6-gram</option>
           </select>
         </div>
         <div class="field">
