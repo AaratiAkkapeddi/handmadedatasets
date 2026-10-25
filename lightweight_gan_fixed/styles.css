@@ -1,0 +1,103 @@
+:root{
+    --bg: #fff;
+    --line: #000;
+    --text: #000;
+    --accent: black;
+    --accent-dim: gray;
+    --good: #4fd18a;
+    --bad: #ff6b6b;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
+    display:flex;
+    justify-content:center;
+    padding: 48px 20px;
+  }
+  main{
+    width:100%;
+    max-width: 480px;
+  }
+  h1{
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+  }
+  p.sub{
+    margin: 0 0 28px;
+    font-size: 0.92rem;
+    line-height:1.5;
+  }
+  .panel{
+    border: 1px solid var(--line);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  label{
+    display:block;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+  .row{
+    display:flex;
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .row > div{ flex:1; }
+  input[type="text"], input[type="number"], select{
+    width:100%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 9px 10px;
+    font-size: 0.9rem;
+  }
+  input[type="file"]{
+    width:100%;
+    font-size: 0.85rem;
+  }
+  .fieldset-last{ margin-bottom:0; }
+  button{
+    width:100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 13px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  button:hover:not(:disabled){ background: #83a0ff; }
+  button:disabled{
+    background: var(--accent-dim);
+    cursor: not-allowed;
+  }
+  #status{
+    font-size: 0.82rem;
+    margin-top: 10px;
+    min-height: 1.2em;
+  }
+  #status.err{ color: var(--bad); }
+  #status.ok{ color: var(--good); }
+  .canvas-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 16px;
+    min-height: 200px;
+  }
+  canvas{
+    image-rendering: pixelated;
+    max-width: 100%;
+    background: #000;
+  }
+  .placeholder{
+    font-size: 0.85rem;
+  }
