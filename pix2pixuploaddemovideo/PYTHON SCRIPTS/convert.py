@@ -7,10 +7,10 @@ Setup:
     playwright install chromium
     (ffmpeg on PATH is optional; falls back to OpenCV's mp4v writer)
 
-Usage:
-    python pix2pix_transfer.py --model model.pict --input frames_folder/
-    python pix2pix_transfer.py --model model.pict --input clip.mp4 --frame-step 2
-    python pix2pix_transfer.py --model model.pict --input anim.gif --out result.mp4
+Usage (please note this will open a Chromium browser window to run the model over and over, don't panic! its normal just wait for it to finish):
+    python pix2pix_transfer.py --model path/to/your/model.pict --input path/to/your/frames_folder/ --headed
+    python pix2pix_transfer.py --model path/to/your/model.pict --input path/to/your/clip.mp4 --frame-step 2 --headed
+    python pix2pix_transfer.py --model path/to/your/model.pict --input path/to/your/anim.gif --out path/to/your/result.mp4 --headed
 """
 import argparse, atexit, base64, functools, http.server, io, re, shutil, subprocess
 import sys, tempfile, threading, time
