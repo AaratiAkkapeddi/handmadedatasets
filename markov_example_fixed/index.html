@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markov Chain Tester</title>
+<link rel="stylesheet" href="./styles.css">
+<script src="https://cdn.jsdelivr.net/npm/rita"></script>
+</head>
+<body>
+<main>
+  <h1>Missed Connections Generator</h1>
+  <p>Generate text using the bundled <code>craigslist_missed.txt</code> corpus at 3-gram.</p>
+
+  <div id="word-count">Loading corpus...</div>
+  <div id="error-box"></div>
+
+  <div id="output-body">
+    <p>Nothing generated yet.</p>
+  </div>
+  <br>
+    <button id="generate-btn" disabled>Generate text</button>
+
+</main>
+
+<script src="./main.js"></script>
+</body>
+</html>
